@@ -14,8 +14,8 @@ void MouseTester::Tick(float deltaTime)
 	super::Tick(deltaTime);
 
 	// 마우스 입력 테스트.
-	if (Input::Get().GetMouseButton(0))
-	{
+	//if (Input::Get().GetMouseButton(0))
+	//{
 		Vector2 mousePosition = Input::Get().MousePosition();
 		char buffer[256] = {};
 		sprintf_s(
@@ -27,5 +27,5 @@ void MouseTester::Tick(float deltaTime)
 		);
 
 		ChangeImage(buffer);
-	}
+	//}
 }

@@ -24,6 +24,10 @@ public:
 private:
 	virtual void Tick(float deltaTime) override;
 
+	// 마우스 위치로 이동하는 함수. 임경우.
+	void Move();
+
+
 	// 오른쪽으로 이동하는 함수.
 	void MoveRight();
 	

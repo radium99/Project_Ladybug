@@ -180,7 +180,7 @@ namespace Wanted
 		FILE* file = nullptr;
 		fopen_s(&file, "../Config/Setting.txt", "rt");
 
-		// 抗寇贸府.
+		// 抗寇贸府.6
 		if (!file)
 		{
 			std::cout << "Failed to open engine setting file.\n";

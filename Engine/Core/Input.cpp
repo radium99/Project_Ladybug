@@ -199,6 +199,9 @@ namespace Wanted
 						mousePosition.x
 							= Util::Clamp<int>(mousePosition.x, 0, Engine::Get().GetWidth() - 1);
 
+						// 마우스 y 위치 설정. 임경우.
+						mousePosition.y = record.Event.MouseEvent.dwMousePosition.Y;
+
 						// y좌표 조정.
 						mousePosition.y
 							= Util::Clamp<int>(mousePosition.y, 0, Engine::Get().GetHeight() - 1);

@@ -37,6 +37,10 @@ void Player::Tick(float deltaTime)
 	//elapsedTime += deltaTime;
 	timer.Tick(deltaTime);
 
+	//이동 처리. 임경우
+	Move();
+
+
 	// 좌우 방향키 입력처리.
 	if (Input::Get().GetKey(VK_LEFT))
 	{
@@ -70,6 +74,16 @@ void Player::Tick(float deltaTime)
 		mode = 1 - mode;
 		fireMode = static_cast<FireMode>(mode);
 	}
+}
+
+void Player::Move() // 임경우.
+{
+	Vector2 mousePos = Input::Get().MousePosition(); // 마우스 위치 가져오기.
+	Vector2 DirectionVector= mousePos - position; // 방향벡터.
+
+	// 이동 예시 코드:
+	position.x = mousePos.x;
+	position.y = mousePos.y;
 }
 
 void Player::MoveRight()
