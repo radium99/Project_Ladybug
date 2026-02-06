@@ -17,7 +17,7 @@ namespace Wanted
 		// 객체가 초기화되면 자기 자신의 주소를 저장.
 		instance = this;
 	}
-	
+
 	Input::~Input()
 	{
 	}

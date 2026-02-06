@@ -12,7 +12,7 @@ namespace Wanted
 	{
 	}
 
-	Vector2::Vector2(float x, float y)
+	Vector2::Vector2(int x, int y)
 		: x(x), y(y)
 	{
 	}
@@ -37,7 +37,7 @@ namespace Wanted
 
 		string = new char[128];
 		memset(string, 0, sizeof(char) * 128);
-		sprintf_s(string, 128, "(%f, %f)", x, y);
+		sprintf_s(string, 128, "(%d, %d)", x, y);
 
 		return string;
 	}
@@ -69,21 +69,5 @@ namespace Wanted
 		coord.Y = static_cast<short>(y);
 
 		return coord;
-	}
-	
-	void Vector2::LengthSquared()
-	{
-		int distanceSquare = x*x + y*y;
-		int len = sqrt(distanceSquare);
-
-		if (len != 0)
-		{
-			x =	x / len;
-			y =	y / len;
-		}
-	}
-	Vector2 Vector2::operator*(const int& other) const
-	{
-		return Vector2(x * other, y* other);
 	}
 }

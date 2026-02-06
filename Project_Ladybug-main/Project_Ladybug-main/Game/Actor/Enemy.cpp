@@ -79,11 +79,11 @@ void Enemy::Tick(float deltaTime)
 	// 타이머 리셋.
 	timer.Reset();
 
-	//// 탄약 발사.
-	//GetOwner()->AddNewActor(new EnemyBullet(
-	//	Vector2(position.x + width / 2, position.y),
-	//	Util::RandomRange(10.0f, 20.0f)
-	//));
+	// 탄약 발사.
+	GetOwner()->AddNewActor(new EnemyBullet(
+		Vector2(position.x + width / 2, position.y),
+		Util::RandomRange(10.0f, 20.0f)
+	));
 }
 
 void Enemy::OnDamaged()

@@ -9,7 +9,7 @@ namespace Wanted
 	{
 	public:
 		Vector2();
-		Vector2(float x, float y);
+		Vector2(int x, int y);
 		~Vector2();
 
 		// 문자열로 변환해서 반환하는 함수.
@@ -31,16 +31,10 @@ namespace Wanted
 		static Vector2 Up;
 		static Vector2 Right;
 
-
-		// 방향벡터용 유클리드 함수 및 곱 연산자.
-		void LengthSquared();
-		Vector2 operator*(const int& other) const;
-
-
 	public:
 		// x/y 좌표.
-		float x = 0;
-		float y = 0;
+		int x = 0;
+		int y = 0;
 
 	private:
 		// 벡터 값을 문자열로 변환할 때 사용할 변수.

@@ -21,7 +21,7 @@ void MouseTester::Tick(float deltaTime)
 		sprintf_s(
 			buffer, 
 			256, 
-			"cursor: (%f, %f)", 
+			"cursor: (%d, %d)", 
 			mousePosition.x, 
 			mousePosition.y
 		);

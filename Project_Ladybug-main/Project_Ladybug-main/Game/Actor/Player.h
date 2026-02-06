@@ -25,7 +25,7 @@ private:
 	virtual void Tick(float deltaTime) override;
 
 	// 마우스 위치로 이동하는 함수. 임경우.
-	void Move(float deltaTime);
+	void Move();
 
 
 	// 오른쪽으로 이동하는 함수.
@@ -49,10 +49,7 @@ private:
 
 	// 타이머 변수.
 	Timer timer;
-	
+
 	// 연사 시간 간격.
 	float fireInterval = 0.2f;
-
-	// 이동 속력.
-	float speed = 10.0f;
 };

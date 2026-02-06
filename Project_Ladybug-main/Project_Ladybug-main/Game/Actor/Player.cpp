@@ -5,8 +5,6 @@
 #include "Level/Level.h"
 #include "Render/Renderer.h"
 
-
-
 Player::Player()
 	: super("<=A=>", Vector2::Zero, Color::Green),
 	fireMode(FireMode::OneShot)
@@ -40,15 +38,8 @@ void Player::Tick(float deltaTime)
 	timer.Tick(deltaTime);
 
 	//이동 처리. 임경우
-	//Move(deltaTime);
-	Vector2 mousePos = Input::Get().MousePosition(); // 마우스 위치 가져오기.
-	Vector2 UnitVector = mousePos - position; // 방향벡터.
+	Move();
 
-	UnitVector.LengthSquared(); // 정수 받아 유클리드 거리 공식으로  단위 벡터 만들기.
-
-	// 위치 이동 코드.
-	position.x = position.x + UnitVector.x * speed * deltaTime; // * 실수형 deltaTime 빠짐.
-	position.y = position.y + UnitVector.y * speed * deltaTime;
 
 	// 좌우 방향키 입력처리.
 	if (Input::Get().GetKey(VK_LEFT))
@@ -85,21 +76,14 @@ void Player::Tick(float deltaTime)
 	}
 }
 
-void Player::Move(float deltaTime) // 임경우.
+void Player::Move() // 임경우.
 {
 	Vector2 mousePos = Input::Get().MousePosition(); // 마우스 위치 가져오기.
-	Vector2 UnitVector= mousePos - position; // 방향벡터.
+	Vector2 DirectionVector= mousePos - position; // 방향벡터.
 
-	UnitVector.LengthSquared(); // 정수 받아 유클리드 거리 공식으로  단위 벡터 만들기.
-	
-	// 위치 이동 코드.
-	position.x = position.x + UnitVector.x * speed * deltaTime; // * 실수형 deltaTime 빠짐.
-	position.y = position.y + UnitVector.y * speed * deltaTime;
-
-		
 	// 이동 예시 코드:
-	//position.x = mousePos.x;
-	//position.y = mousePos.y;
+	position.x = mousePos.x;
+	position.y = mousePos.y;
 }
 
 void Player::MoveRight()
