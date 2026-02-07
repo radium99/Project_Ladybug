@@ -28,6 +28,7 @@ namespace Wanted
 	
 	const char* Vector2::ToString()
 	{
+
 		// 기존 문자열이 있다면 제거.
 		if (string)
 		{
@@ -71,19 +72,32 @@ namespace Wanted
 		return coord;
 	}
 	
-	void Vector2::LengthSquared()
+	void Vector2::ChangeToUnitVector()
 	{
-		int distanceSquare = x*x + y*y;
-		int len = sqrt(distanceSquare);
+		// 아래 두 녀석을 float로 받으면 플레이억 좌우로 흔들림.
+		float distanceSquare = x*x + y*y;	// 방향벡터 타겟(x, y), 플레이어(a,b)  => (x-a)^2, (y - b)^2
+		float len = sqrtf(distanceSquare); // 거리구함.
 
-		if (len != 0)
+		if (len != 0.0f)
 		{
 			x =	x / len;
 			y =	y / len;
 		}
 	}
-	Vector2 Vector2::operator*(const int& other) const
+	Vector2 Vector2::operator*(const int other) const
 	{
 		return Vector2(x * other, y* other);
+	}
+
+	Vector2 Vector2::operator*(const float other) const
+	{
+		return Vector2(x * other, y * other);
+	}
+
+	Vector2& Vector2::operator+=(const Vector2& other)
+	{
+		this->x += other.x;
+		this->y += other.y;
+		return *this;
 	}
 }

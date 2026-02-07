@@ -1,13 +1,13 @@
 #pragma once
 
-#include "Actor/Actor.h"
 #include "Util/Timer.h"
+#include "Actor/Combatant.h" // 0207  Actor -> Combatant로 상속 변경.
 
 using namespace Wanted;
 
-class Enemy : public Actor
+class Enemy : public Combatant
 {
-	RTTI_DECLARATIONS(Enemy, Actor)
+	RTTI_DECLARATIONS(Enemy, Combatant)
 
 	// 이동 방향 열거형.
 	enum class MoveDirection
@@ -25,7 +25,7 @@ public:
 	virtual void Tick(float deltaTime) override;
 
 	// 대미지 받았을 때 처리할 함수.
-	void OnDamaged();
+	void OnDamaged(int dmg);
 
 private:
 	// 이동 방향 열거형.

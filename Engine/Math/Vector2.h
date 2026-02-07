@@ -33,9 +33,10 @@ namespace Wanted
 
 
 		// 방향벡터용 유클리드 함수 및 곱 연산자.
-		void LengthSquared();
-		Vector2 operator*(const int& other) const;
-
+		void ChangeToUnitVector(); // 방향벡터에서 호출했을 때만 단위벡터가된다.
+		Vector2 operator*(const int other) const;
+		Vector2 operator*(const float other) const;
+		Vector2& operator+=(const Vector2& other); // 스콧마이어스 표준 구현 형식
 
 	public:
 		// x/y 좌표.

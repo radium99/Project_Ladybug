@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
@@ -90,6 +90,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Actor\Combatant.cpp" />
     <ClCompile Include="Actor\Enemy.cpp" />
     <ClCompile Include="Actor\EnemyBullet.cpp" />
     <ClCompile Include="Actor\EnemyDestroyEffect.cpp" />
@@ -102,6 +103,7 @@
     <ClCompile Include="Util\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Actor\Combatant.h" />
     <ClInclude Include="Actor\Enemy.h" />
     <ClInclude Include="Actor\EnemyBullet.h" />
     <ClInclude Include="Actor\EnemyDestroyEffect.h" />

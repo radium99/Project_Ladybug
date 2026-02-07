@@ -4,9 +4,10 @@
 #include "Level/Level.h"
 #include "Actor/EnemyBullet.h"
 #include "Actor/EnemyDestroyEffect.h"
+#include "Core/Input.h"
 
 Enemy::Enemy(const char* image, int yPosition)
-	: super(image)
+	: super("w('W')/ ", Vector2::Zero, Color::Red, 0, 100)
 {
 	// 랜덤 (오른쪽 또는 왼쪽으로 이동할지 결정).
 	int random = Util::Random(1, 10);
@@ -48,6 +49,7 @@ void Enemy::Tick(float deltaTime)
 		= direction == MoveDirection::Left ? -1.0f : 1.0f;
 	xPosition = xPosition + moveSpeed * dir * deltaTime;
 
+
 	// 좌표 검사.
 	// 화면 왼쪽을 완전히 벗어났으면.
 	if (xPosition + width < 0)
@@ -69,6 +71,12 @@ void Enemy::Tick(float deltaTime)
 		position.y
 	));
 
+	// 플레이어 체간 데미지 입력 처리.
+	if (Input::Get().GetKeyDown(VK_UP))
+	{
+		OnDamaged(120);
+	}
+
 	// 발사 타이머 업데이트.
 	timer.Tick(deltaTime);
 	if (!timer.IsTimeOut())
@@ -84,13 +92,20 @@ void Enemy::Tick(float deltaTime)
 	//	Vector2(position.x + width / 2, position.y),
 	//	Util::RandomRange(10.0f, 20.0f)
 	//));
+
 }
 
-void Enemy::OnDamaged()
+void Enemy::OnDamaged(int dmg)
 {
-	// 액터 제거.
-	Destroy();
+	TakePostureDamage(dmg);
 
-	// 이펙트 생성 (재생을 위해).
-	GetOwner()->AddNewActor(new EnemyDestroyEffect(position));
+	// ==인 이유는 TakePostureDamage()에서 maxPosture를 초과하는 dmg를 받았을 때, maxPosture와 수치를 같게 만들어줌.
+	if (currentPosture == maxPosture)
+	{
+		// 액터 제거.
+		Destroy();
+		// 이펙트 생성 (재생을 위해).
+		GetOwner()->AddNewActor(new EnemyDestroyEffect(position));
+	}
+
 }

@@ -94,7 +94,7 @@ void GameLevel::ProcessCollisionPlayerBulletAndEnemy()
 			// AABB 겹침 판정.
 			if (bullet->TestIntersect(enemy))
 			{
-				enemy->OnDamaged();
+				enemy->OnDamaged(10); // 기존 enemy->OnDamaged();
 				bullet->Destroy();
 
 				// 점수 추가.

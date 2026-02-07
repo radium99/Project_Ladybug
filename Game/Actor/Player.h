@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Actor/Actor.h"
 #include "Util/Timer.h"
+#include "Actor/Combatant.h" // 0207  Actor -> Combatant로 상속 변경.
 
 using namespace Wanted;
 
-class Player : public Actor
+class Player : public Combatant
 {
 	// 발사 모드.
 	enum class FireMode
@@ -15,7 +15,7 @@ class Player : public Actor
 		Repeat
 	};
 
-	RTTI_DECLARATIONS(Player, Actor)
+	RTTI_DECLARATIONS(Player, Combatant)
 
 public:
 	Player();
@@ -25,7 +25,7 @@ private:
 	virtual void Tick(float deltaTime) override;
 
 	// 마우스 위치로 이동하는 함수. 임경우.
-	void Move(float deltaTime);
+	void Move();
 
 
 	// 오른쪽으로 이동하는 함수.
@@ -42,6 +42,13 @@ private:
 
 	// 발사 가능여부 확인 함수.
 	bool CanShoot() const;
+
+
+	// 테스트: 플레이어 위치 확인용 함수.
+	void ShowPos(Vector2& position);
+
+	// 테스트: 플레이어 체간 확인용 함수.
+	void ShowPosture();
 
 private:
 	// 발사 모드.
